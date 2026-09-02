@@ -6,6 +6,7 @@ exports.getWeather =  async (req,res) =>{
     try {
     const city = req.params.city;
     const apiKey = process.env.WEATHER_API_KEY;
+    await searchM.create({ city });
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
        // console.log(apiKey);
@@ -15,7 +16,6 @@ exports.getWeather =  async (req,res) =>{
 
     const response = await axios.get(url);
 
-    await searchM.create({ city });
 
    // console.log(response.data);
 
@@ -26,11 +26,14 @@ exports.getWeather =  async (req,res) =>{
     });
 
 } catch (error) {
+
+    console.log();
     console.log(error.response?.data || error.message);
 
     res.status(500).json({
         status: 0,
-        message: "Weather API failed"
+        message: "Weather API failed",
+        data : error.response
     });
 }
 
