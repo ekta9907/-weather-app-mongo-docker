@@ -27,7 +27,6 @@ exports.getWeather =  async (req,res) =>{
 
 } catch (error) {
 
-    console.log();
     console.log(error.response?.data || error.message);
 
     res.status(500).json({
