@@ -79,7 +79,7 @@ document.getElementById("weather").innerHTML = `
     loadHistory();
 }
 async function loadHistory() {
-    console.log('loadhistory');
+    console.log('loadhistory1');
 
     const response =
         await fetch("/api/history");
