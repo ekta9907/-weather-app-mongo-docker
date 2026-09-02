@@ -117,7 +117,7 @@ async function loadCurrentLocationWeather() {
             const lon = position.coords.longitude;
 
             const response = await fetch(
-                `/api/weather/location?lat=${lat}&lon=${lon}`
+                `http://35.154.65.119/api/weather/location?lat=${lat}&lon=${lon}`
             );
 
             const result = await response.json();
