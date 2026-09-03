@@ -172,4 +172,5 @@ function renderWeather(weather) {
 }
 
 loadCurrentLocationWeather();
-loadHistory();
+//loadHistory();
+setTimeout(loadHistory, 10000); // runs after 2 seconds
