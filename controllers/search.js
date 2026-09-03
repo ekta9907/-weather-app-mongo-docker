@@ -1,4 +1,6 @@
 const axios = require('axios');
+const mongoose = require('mongoose');
+
 const searchM = require('../models/search.js');
 
 exports.getWeather =  async (req,res) =>{
@@ -40,13 +42,16 @@ exports.getWeather =  async (req,res) =>{
 
 exports.getHistory = async (req,res) =>{
 
-    const history =  await searchM 
-    .find()
-    .sort({
-        createdAt : -1
-    })
-    .limit(10);
+  try {
+    const history = await Search
+      .find()
+      .sort({ createdAt: -1 })
+      .limit(10);
     res.json(history);
+  } catch (error) {
+    console.error('getHistory error:', error.message);
+    res.status(500).json({ error: 'Failed to fetch history' });
+  }
 }
 
 exports.getWeatherByLocation = async (req, res) => {
