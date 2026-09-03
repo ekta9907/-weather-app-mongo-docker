@@ -12,4 +12,4 @@ const searchSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model('Search', searchSchema);
+module.exports = mongoose.model('searchschemas', searchSchema);

@@ -117,7 +117,7 @@ async function loadCurrentLocationWeather() {
             const lon = position.coords.longitude;
 
             const response = await fetch(
-                `http://35.154.65.119/api/weather/location?lat=${lat}&lon=${lon}`
+                `/api/weather/location?lat=${lat}&lon=${lon}`
             );
 
             const result = await response.json();
@@ -172,5 +172,4 @@ function renderWeather(weather) {
 }
 
 loadCurrentLocationWeather();
-//loadHistory();
-setTimeout(loadHistory, 10000); // runs after 2 seconds
+loadHistory();
